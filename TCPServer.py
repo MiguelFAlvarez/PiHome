@@ -15,10 +15,10 @@ def clientThread(clientSocket, address):
         if not data: break
 
         #Light control data[1] = light command, data[2] = on or off, data[3] = which switch
-        if data[1]==1 and data[2]==0:
+        if data[1]==1 and data[2]==1:
             print ("Turning on light ", data[3]+1)
             os.system("/home/pi/PiHome/rfoutlet/codesend %d" % onCode[data[3]])
-        if data[1]==1 and data[2]==1:
+        if data[1]==1 and data[2]==0:
             print ("Turning off light ", data[3]+1)
             os.system("/home/pi/PiHome/rfoutlet/codesend %d" % offCode[data[3]])
         print ("received data:", data)
